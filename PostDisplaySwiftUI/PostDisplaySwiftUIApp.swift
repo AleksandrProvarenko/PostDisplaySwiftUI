@@ -11,7 +11,7 @@ import SwiftUI
 struct PostDisplaySwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainPostsView()
         }
     }
 }
