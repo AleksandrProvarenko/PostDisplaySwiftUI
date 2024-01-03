@@ -20,13 +20,12 @@ struct ListRowView: View {
                     .fontWeight(.medium)
                 Text(article)
                 HStack {
-                    Image(systemName: "heart")
-                    Spacer()
-                    Text("3 days ago")
+                   
                 }
             }
         }
-        .listStyle(PlainListStyle())
+        .listRowSeparator(.hidden)
+        .listStyle(.plain)
     }
 }
 

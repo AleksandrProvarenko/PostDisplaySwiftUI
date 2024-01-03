@@ -13,11 +13,13 @@ struct DispalayPostInfoView: View {
     var article = "As you take a look back at some of the articles below, we cannot overstate how much we appreciate your readership and patronage of our work this past year."
     
     var body: some View {
+        NavigationStack {
             ScrollView {
+                Image("Christmas")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity)
                 VStack(alignment: .leading, spacing: 10) {
-                    Image("Christmas")
-                        .resizable()
-                        .scaledToFit()
                     Text(title)
                         .font(.title2)
                         .fontWeight(.medium)
@@ -28,8 +30,11 @@ struct DispalayPostInfoView: View {
                         Text("3 days ago")
                     }
                 }
+                .padding()
             }
+            .navigationTitle("Article")
             Spacer()
+        }
     }
 }
 
