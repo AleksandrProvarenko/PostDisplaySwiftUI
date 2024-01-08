@@ -9,26 +9,22 @@ import SwiftUI
 
 struct ListRowView: View {
     
-    var title = "Title"
-    var article = "As you take a look back at some of the articles below, we cannot overstate how much we appreciate your readership and patronage of our work this past year."
+    var post: Post
     
     var body: some View {
-        List {
-            VStack(alignment: .leading, spacing: 10) {
-                Text(title)
-                    .font(.title2)
-                    .fontWeight(.medium)
-                Text(article)
-                HStack {
-                   
-                }
-            }
+        VStack(alignment: .leading, spacing: 10) {
+            Text(post.title)
+                .font(.title2)
+                .fontWeight(.medium)
+            Text(post.previewText)
         }
-        .listRowSeparator(.hidden)
-        .listStyle(.plain)
     }
 }
 
 #Preview {
-    ListRowView()
+    ListRowView(post: Post(postID: 2,
+                           timeshamp: 23,
+                           title: "Title",
+                           previewText: "Previw text",
+                           likesCount: 40))
 }

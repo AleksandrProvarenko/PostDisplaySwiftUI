@@ -8,16 +8,28 @@
 import SwiftUI
 
 struct MainPostsView: View {
-
+    
+    @StateObject var vm = MainPostViewModel()
+    
     var body: some View {
         NavigationStack {
-            NavigationLink(destination: {
-                DispalayPostInfoView()
-            }, label: {
-                ListRowView()
-            })
-            .buttonStyle(PlainButtonStyle())
-            .navigationTitle("Posts")
+            List {
+                ForEach(vm.posts, id: \.postID) { post in
+                    NavigationLink(destination: {
+                        DispalayPostInfoView()
+                    }, label: {
+                        ListRowView(post: post)
+                    })
+                }
+                .navigationTitle("Posts")
+                .buttonStyle(PlainButtonStyle())
+            }
+            .listStyle(InsetListStyle())
+        }
+        .onAppear {
+            Task {
+                await vm.fetchPost()
+            }
         }
     }
 }
